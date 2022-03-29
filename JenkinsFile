@@ -1,7 +1,9 @@
-node
+pipeline
 {
-
-stage('Clone repository') {
+agent { docker { image 'selenium/standalone-firefox:latest' } }
+    
+Stages{
+    stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
 
         checkout scm
@@ -32,8 +34,8 @@ stage('Clone repository') {
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
+        }   
     }
 }
-
 
 
