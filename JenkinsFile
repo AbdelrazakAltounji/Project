@@ -5,8 +5,12 @@ agent any
 stages{
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
+        script{
 
-        git 'https://github.com/AbdelrazakAltounji/Project.git'
+            git credentialsId: 'Project' , url: 'https://github.com/AbdelrazakAltounji/Project.git'
+            //sh "ls -lart". 
+        }
+        
     }
 
     stage('Build image') {
